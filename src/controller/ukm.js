@@ -70,10 +70,29 @@ const deleteUkm = async (req, res) => {
     }
 }
 
+const getToko = async (req, res) => {
+    const{id} = req.params;
+    const {body} = req;
+    try {
+        await tokoModel.getToko(body, id);
+        res.json({
+            mesage: "get toko successfull",
+            data: body
+        })
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({
+            message: 'Server error', 
+            serverMessage: error,
+        });       
+    }
+}
+
 
 module.exports={
     getAllUkm,
     createNewUkm,
     updateUkm,
-    deleteUkm
+    deleteUkm,
+    getToko
 }

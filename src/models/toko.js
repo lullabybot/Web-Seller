@@ -1,7 +1,7 @@
 const db = require('../config/db.js')
 
 const getAllToko = () => {
-    const query = 'SELECT * FROM toko WHERE id=1';
+    const query = 'SELECT * FROM toko';
     
     return db.execute(query);
 }
@@ -24,9 +24,16 @@ const deleteToko = (body, id) => {
     return db.execute(query);
 }
 
+const getToko = (body, id) => {
+    const query = `SELECT nama, alamat, nohp, email, pass, qris, gambar, slogan FROM toko WHERE id=${id}`
+
+    return db.execute(query);
+}
+
 module.exports = {
     getAllToko,
     createToko,
     editToko,
-    deleteToko
+    deleteToko,
+    getToko
 };

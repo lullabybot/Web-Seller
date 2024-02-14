@@ -9,10 +9,13 @@
   "author": "Sammy",
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.3",
     "express": "^4.18.2",
     "mysql": "^2.18.1",
     "mysql2": "^3.9.1",
-    "nodemon": "^3.0.3"
+    "nodemon": "^3.0.3",
+    "sequelize": "^6.37.0"
   }
 }

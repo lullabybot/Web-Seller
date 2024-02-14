@@ -11,4 +11,5 @@ router.patch('/:id', ukmController.updateUkm)
 
 router.delete('/:id', ukmController.deleteUkm)
 
+router.get('/:id', ukmController.getToko)
 module.exports = router
