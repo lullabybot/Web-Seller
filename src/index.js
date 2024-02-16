@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import routes from './routes/ukm.js';
+import routerPelanggan from './routes/pelanggan.js';
 import logreq from './middleware/log.js';
 
 dotenv.config();
@@ -14,6 +15,7 @@ app.use(logreq);
 app.use(express.json());
 
 app.use('/ukm', routes);
+app.use('/pelanggan', routerPelanggan);
 
 app.listen(PORT, () => {
     console.log('Server get Running in port', PORT);

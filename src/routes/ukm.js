@@ -1,6 +1,7 @@
 import express from 'express';
 import ukmController from '../controller/ukm.js';
 import { body, validationResult } from 'express-validator';
+import pelangganController from '../controller/pelangganController.js';
 
 
 const inputValidationMiddleware = [
@@ -21,9 +22,7 @@ router.get('/', ukmController.getAllUkm)
 
 router.patch('/:id', inputValidationMiddleware, ukmController.updateUkm)
 
-router.delete('/:id', ukmController.deleteUkm)={
-  console.error()
-}
+router.delete('/:id', ukmController.deleteUkm)
 
 router.get('/:id', ukmController.getToko)
 

@@ -1,28 +1,27 @@
-import tokoModel from '../models/toko.js';
+import { body } from "express-validator";
+import pelangganModel from "../models/pelangganModel.js";
 
-const getAllUkm = async (req, res) => {
-    try {
-        const [data] = await tokoModel.getAllToko();
-          res.json({
-            message: 'GET all toko Success',
-            data: data
+const ambilPelanggan = async (req, res) => {
+    const body = req;
+  try {
+    const [data] = await pelangganModel.getAllPelanggan (body);
+    res.json({
+        message: 'Successfull creating pelanggan',
+        data: data
     })
-    }catch(error){
-        res.status(500).json({
-            message: 'Server error', 
-            serverMessage: error,
-        })
-    } 
-}
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Server error" });
+  } 
+};
 
-const createNewUkm = async (req, res) => {
-
+const createNewPelanggan = async (req, res) => {
     const {body} = req;
     
     try {
-        await tokoModel.createToko(body);
+        await pelangganModel.createPelanggan(body);
         res.json({
-            message: 'Successfull creating ukm',
+            message: 'Successfull creating pelanggan',
             data: body
         });
     } catch (error) {
@@ -34,11 +33,11 @@ const createNewUkm = async (req, res) => {
     }
 }
 
-const updateUkm = async (req, res) => {
+const updatePelanggan = async (req, res) => {
     const {id} = req.params;
     const {body} = req;
     try {
-        await tokoModel.editToko(body, id);
+        await pelangganModel.editPelanggan(body, id);
         res.json({
             message: "update success",
             data: body
@@ -54,11 +53,11 @@ const updateUkm = async (req, res) => {
 }
 
 
-const deleteUkm = async (req, res) => {
+const deletePelanggan = async (req, res) => {
     const {id} = req.params;
     const {body} = req;
     try {
-        await tokoModel.deleteToko(body, id);
+        await pelangganModel.deletePelanggan(body, id);
         res.json({
             message: "delete user success",
             data: body
@@ -72,11 +71,11 @@ const deleteUkm = async (req, res) => {
     }
 }
 
-const getToko = async (req, res) => {
+const getPelanggan = async (req, res) => {
     const{id} = req.params;
     const {body} = req;
     try {
-        await tokoModel.getToko(body, id);
+        await pelangganModel.getPelanggan(body, id);
         res.json({
             mesage: "get toko successfull",
             data: body
@@ -91,11 +90,12 @@ const getToko = async (req, res) => {
 }
 
 
-const ukmController = {
-    getAllUkm,
-    createNewUkm,
-    updateUkm,
-    deleteUkm,
-    getToko }
+const pelangganController = {
+    ambilPelanggan,
+    createNewPelanggan,
+    updatePelanggan,
+    deletePelanggan,
+    getPelanggan 
+}
 
-export default ukmController;
+export default pelangganController;

@@ -1,43 +1,46 @@
 import { Sequelize } from 'sequelize';
 
-const db = require('../config/db.js')
+import db from '../config/db.js';
 
 const { DataType } = Sequelize;
 
-const getAllToko = () => {
-    const query = 'SELECT * FROM toko';
+const getAllPelanggan = () => {
+    const query = 'SELECT * FROM pelanggan';
     
     return db.execute(query);
 }
 
-const createToko = (body) => {
-    const query = `INSERT INTO toko (nama, alamat, nohp, email, pass, qris, gambar, slogan) VALUES ('${body.nama}', '${body.alamat}', ${body.nohp}, '${body.email}', '${body.pass}', '${body.qris}', '${body.gambar}', '${body.slogan}')`;
+const createPelanggan = (body) => {
+    const query = `INSERT INTO pelanggan (nama, notelp, email, alamat, isActive) VALUES ('${body.nama}', ${body.notelp}, '${body.email}', '${body.alamat}', '${body.isActive}')`;
 
     return db.execute(query);
 }
 
-const editToko = (body, id) => {
-    const query = `UPDATE toko SET nama='${body.nama}', alamat='${body.alamat}', nohp='${body.nohp}', email='${body.email}', pass='${body.pass}', qris='${body.qris}', gambar='$body.gambar', slogan='${body.slogan}' WHERE id=${id}`
+const editPelanggan = (body, id) => {
+    const query = `UPDATE pelanggan SET nama='${body.nama}', notelp='${body.notelp}', email='${body.email}', alamat='${body.alamat}', isActive=${body.isActive}' WHERE id=${id}`
 
     return db.execute(query);
 }
 
-const deleteToko = (body, id) => {
-    const query = `DELETE FROM toko WHERE id=${id}`
+const deletePelanggan = (body, id) => {
+    const query = `DELETE FROM pelanggan WHERE id=${id}`
     
     return db.execute(query);
 }
 
-const getToko = (body, id) => {
-    const query = `SELECT nama, alamat, nohp, email, pass, qris, gambar, slogan FROM toko WHERE id=${id}`
+const getPelanggan = (body, id) => {
+    const query = `SELECT nama, nohp, email, alamat, isActive FROM pelanggan WHERE id=${id}`
 
     return db.execute(query);
 }
 
-module.exports = {
-    getAllToko,
-    createToko,
-    editToko,
-    deleteToko,
-    getToko
-};
+const pelangganModel = {
+    getAllPelanggan,
+    createPelanggan,
+    editPelanggan,
+    deletePelanggan,
+    getPelanggan
+    }
+;
+
+export default pelangganModel
