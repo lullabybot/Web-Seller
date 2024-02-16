@@ -1,11 +1,12 @@
-const mysql = require('mysql2')
+import mysql from 'mysql2';
+
 // const util = require('util')
 
-const db = mysql.createPool({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USERNAME,
+const conn = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
     password: '',
-    database: process.env.DB_NAME
+    database: 'next_db_ukmbot'
 });
 
 // db.connect((err) => {
@@ -16,4 +17,6 @@ const db = mysql.createPool({
 //     console.log('koneksi berhasil');
 // })
 
-module.exports = db.promise();
+const db = conn.promise();
+
+export default db;

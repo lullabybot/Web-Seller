@@ -1,15 +1,30 @@
-const express = require('express');
-const ukmController = require('../controller/ukm.js')
+import express from 'express';
+import ukmController from '../controller/ukm.js';
+import { body, validationResult } from 'express-validator';
+
+
+const inputValidationMiddleware = [
+    body('nama').isString().notEmpty(),
+    body('alamat').isString().notEmpty(),
+    body('notelp').isNumeric().notEmpty(),
+    body('email').isEmail(),
+    body('pass').isString().notEmpty(),
+    body('isActive').isBoolean().notEmpty()
+  ];
 
 const router = express.Router();
 
-router.post('/', ukmController.createNewUkm)
+
+router.post('/', inputValidationMiddleware, ukmController.createNewUkm)
 
 router.get('/', ukmController.getAllUkm)
 
-router.patch('/:id', ukmController.updateUkm)
+router.patch('/:id', inputValidationMiddleware, ukmController.updateUkm)
 
-router.delete('/:id', ukmController.deleteUkm)
+router.delete('/:id', ukmController.deleteUkm)={
+  console.error()
+}
 
 router.get('/:id', ukmController.getToko)
-module.exports = router
+
+export default router;

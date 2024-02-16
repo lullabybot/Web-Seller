@@ -1,10 +1,13 @@
-const tokoModel = require('../models/toko')
+import tokoModel from '../models/toko.js';
+
+  
 
 const getAllUkm = async (req, res) => {
-    try {const [data] = await tokoModel.getAllToko();
-    res.json({
-        message: 'GET all toko Success',
-        data: data
+    try {
+        const [data] = await tokoModel.getAllToko();
+          res.json({
+            message: 'GET all toko Success',
+            data: data
     })
     }catch(error){
         res.status(500).json({
@@ -15,6 +18,10 @@ const getAllUkm = async (req, res) => {
 }
 
 const createNewUkm = async (req, res) => {
+    const errors = input(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
     const {body} = req;
     
     try {
@@ -89,10 +96,11 @@ const getToko = async (req, res) => {
 }
 
 
-module.exports={
+const ukmController = {
     getAllUkm,
     createNewUkm,
     updateUkm,
     deleteUkm,
-    getToko
-}
+    getToko }
+
+export default ukmController;
