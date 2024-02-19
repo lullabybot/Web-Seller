@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital@0;1&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --biruGelapSS:#030714;
+    --biruGelapS:#091336;
+    --biruTerangR: #052487;
+    --biruTerangSR: #02155c;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--biruGelapS);
+    color: var(--biruTerangR);
+}
+
+nav {
+    background: linear-gradient(to top, var(--biruGelapSS), var(--biruGelapS)); /* Gradien dari bawah */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    justify-content: space-around;
+}
+
+
+
+ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-around;
+    
+}
+
+li{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 5%;
+    /* align-items: center;
+    text-align: center; */
+}
+
+a {
+    font-size: large;
+    text-decoration: none;
+    transition: font-size 0.2s ease; /* Efek transisi pada perubahan font-size */
+    position: relative;
+}
+
+a:hover, a:focus {
+    font-size: x-large; /* Saat di hover, ukuran font diperbesar */
+}
+
+a.active {
+    font-size: x-large; /* Ukuran besar untuk tombol yang aktif */
+}
+
+a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: var(--biruTerangR);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease; /* Animasi lebar */
+}
+
+a.active::after, a:hover::after{
+    width: 100%; /* Lebar garis bawah saat tombol aktif */
+}
+
+
+a.defaultLarge {
+    font-size: x-large; /* Ukuran besar untuk tombol Home */
+}
+
+a.defaultLarge::after {
+    width: 100%; /* Lebar garis bawah saat tombol Home secara default */
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+  }
+  
+
+
