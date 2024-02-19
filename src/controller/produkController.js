@@ -75,13 +75,13 @@ const deleteProduk = async (req, res) => {
 }
 
 const getProduk = async (req, res) => {
-    const{id} = req.params;
-    const {body} = req;
+    const {id} = req.params;
+
     try {
-        await produkModel.getProduk(body, id);
+        const [data] = await produkModel.getProduk(body, id);
         res.json({
             mesage: "get produk successfull",
-            data: body
+            data: data
         })
     } catch (error) {
         console.error('Error:', error);
@@ -90,6 +90,7 @@ const getProduk = async (req, res) => {
             serverMessage: error,
         });       
     }
+    console.log('id:', id)
 }
 
 

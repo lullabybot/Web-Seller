@@ -74,20 +74,20 @@ const deletePelanggan = async (req, res) => {
 
 const getPelanggan = async (req, res) => {
     const{id} = req.params;
-    const {body} = req;
+
     try {
-        await pelangganModel.getPelanggan(body, id);
+        const [data] = await pelangganModel.getPelanggan(body, id);
         res.json({
             mesage: "get toko successfull",
-            data: body
+            data: data
         })
     } catch (error) {
-        console.error('Error:', error);
         res.status(500).json({
             message: 'Server error', 
             serverMessage: error,
         });       
     }
+    console.log('id:', id);
 }
 
 

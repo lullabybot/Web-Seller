@@ -30,7 +30,7 @@ const deletePelanggan = (body, id) => {
     return db.execute(query);
 }
 
-const getPelanggan = (body, id) => {
+const getPelanggan = (id) => {
     const query = `SELECT nama, nohp, email, alamat, isActive FROM pelanggan WHERE id=${id}`
 
     return db.execute(query);

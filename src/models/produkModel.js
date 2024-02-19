@@ -31,7 +31,7 @@ const deleteProduk = (body, idProd) => {
     return db.execute(query);
 }
 
-const getProduk = (body, id) => {
+const getProduk = (id) => {
     const query = `SELECT nama_barang, deskripsi, satuan, harga_beli, harga_jual FROM produk WHERE id=${id}`
 
     return db.execute(query);

@@ -72,21 +72,22 @@ const deleteUkm = async (req, res) => {
 }
 
 const getToko = async (req, res) => {
-    const{id} = req.params;
-    const {body} = req;
+    const {id} = req.params;
+    
     try {
-        await tokoModel.getToko(body, id);
+        const [data] = await tokoModel.getToko(id);
         res.json({
             mesage: "get toko successfull",
-            data: body
+            data: data
         })
     } catch (error) {
-        console.error('Error:', error);
         res.status(500).json({
             message: 'Server error', 
             serverMessage: error,
         });       
+        console.error(error);
     }
+    console.log('id:', id)
 }
 
 
