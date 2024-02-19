@@ -5,8 +5,8 @@ import db from '../config/db.js';
 
 const { DataType } = Sequelize;
 
-const getAllProduk = () => {
-    const query = 'SELECT * FROM produk';
+const getAllProduk = (id) => {
+    const query = `SELECT * FROM produk WHERE id_toko = 1`;
     
     return db.execute(query);
 }
@@ -18,15 +18,15 @@ const createProduk = (body, id) => {
     return db.execute(query);
 }
 
-const editProduk = (body, id) => {
+const editProduk = (body, idProd) => {
     const query = `UPDATE produk SET nama_barang='${body.nama_barang}', deskripsi='${body.deskripsi}', 
-    satuan='${body.satuan}', harga_beli='${body.harga_beli}', harga_jual='${body.harga_jual}' WHERE id=${id}`
+    satuan='${body.satuan}', harga_beli='${body.harga_beli}', harga_jual='${body.harga_jual}' WHERE id=${idProd}`
 
     return db.execute(query);
 }
 
-const deleteProduk = (body, id) => {
-    const query = `DELETE FROM produk WHERE id=${id}`
+const deleteProduk = (body, idProd) => {
+    const query = `DELETE FROM produk WHERE id=${idProd}`
     
     return db.execute(query);
 }

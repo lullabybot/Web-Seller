@@ -37,11 +37,9 @@ router.get('/:id', ukmController.getToko)
 
 router.post('/:id/produk', inputValidation, produkController.createNewProduk)
 
-router.get('/', produkController.ambilProduk)
+router.patch('/:id/produk/:idProd', inputValidation, produkController.updateProduk)
 
-router.patch('/:id/produk', inputValidation, produkController.updateProduk)
+router.delete('/:id/produk/:idProd', inputValidation, produkController.deleteProduk)
 
-router.delete('/:id/produk', inputValidation, produkController.deleteProduk)
-
-router.get('/:id', produkController.getProduk)
+router.get('/:id/produk', produkController.ambilProduk)
 export default router;

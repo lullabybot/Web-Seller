@@ -3,9 +3,10 @@ import produkModel from "../models/produkModel.js";
 
 
 const ambilProduk = async (req, res) => {
+    const {id} = req.params;
     const body = req;
   try {
-    const [data] = await produkModel.getAllProduk (body);
+    const [data] = await produkModel.getAllProduk (body, id);
     res.json({
         message: 'Successfull fetching produk',
         data: data
@@ -36,10 +37,10 @@ const createNewProduk = async (req, res) => {
 }
 
 const updateProduk = async (req, res) => {
-    const {id} = req.params;
+    const {idProd} = req.params;
     const {body} = req;
     try {
-        await produkModel.editProduk(body, id);
+        await produkModel.editProduk(body, idProd);
         res.json({
             message: "update success",
             data: body
@@ -51,15 +52,15 @@ const updateProduk = async (req, res) => {
             serverMessage: error,
         });
     }
-    console.log('id:', id)
+    console.log('id Produk:', idProd)
 }
 
 
 const deleteProduk = async (req, res) => {
-    const {id} = req.params;
+    const {idProd} = req.params;
     const {body} = req;
     try {
-        await produkModel.deleteProduk(body, id);
+        await produkModel.deleteProduk(body, idProd);
         res.json({
             message: "delete user success",
             data: body

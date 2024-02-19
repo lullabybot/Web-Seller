@@ -30,7 +30,7 @@ const deleteToko = (body, id) => {
 }
 
 const getToko = (body, id) => {
-    const query = `SELECT nama, alamat, nohp, email, pass FROM toko WHERE id=${id}`
+    const query = `SELECT nama, alamat, notelp, email, pass FROM toko WHERE id=${id}`
 
     return db.execute(query);
 }
