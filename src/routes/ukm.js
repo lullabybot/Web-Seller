@@ -1,7 +1,7 @@
 import express from 'express';
 import ukmController from '../controller/ukm.js';
 import { body, validationResult } from 'express-validator';
-import pelangganController from '../controller/pelangganController.js';
+// import pelangganController from '../controller/pelangganController.js';
 
 
 const inputValidationMiddleware = [

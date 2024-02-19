@@ -12,7 +12,7 @@ const getAllToko = () => {
 }
 
 const createToko = (body) => {
-    const query = `INSERT INTO toko (INSERT INTO toko (nama, alamat, notelp, email, pass, isActive) VALUES ('${body.nama}', '${body.alamat}', ${body.notelp}, '${body.email}', '${body.pass}', '${body.isActive}')`;
+    const query = `INSERT INTO toko (nama, alamat, notelp, email, pass, isActive) VALUES ('${body.nama}', '${body.alamat}', ${body.notelp}, '${body.email}', '${body.pass}', '${body.isActive}')`;
 
     return db.execute(query);
 }
@@ -35,12 +35,24 @@ const getToko = (body, id) => {
     return db.execute(query);
 }
 
+const getUserByUsernameAndPassword = (username, password, callback, body) => {
+    const query = 'SELECT * FROM toko WHERE nama = ${body.nama} AND pass = ${body.pass}';
+    connection.query(query, [username, password], (error, results, fields) => {
+      if (error) {
+        return callback(error, null);
+      }
+      return callback(null, results);
+    });
+  };
+  
+
 const tokoModel = {
     getAllToko,
     createToko,
     editToko,
     deleteToko,
-    getToko
+    getToko,
+    getUserByUsernameAndPassword
 };
 
 export default tokoModel

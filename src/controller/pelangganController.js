@@ -1,12 +1,13 @@
-import { body } from "express-validator";
+// import { body } from "express-validator";
 import pelangganModel from "../models/pelangganModel.js";
+
 
 const ambilPelanggan = async (req, res) => {
     const body = req;
   try {
     const [data] = await pelangganModel.getAllPelanggan (body);
     res.json({
-        message: 'Successfull creating pelanggan',
+        message: 'Successfull fetching pelanggan',
         data: data
     })
   } catch (error) {
@@ -16,7 +17,7 @@ const ambilPelanggan = async (req, res) => {
 };
 
 const createNewPelanggan = async (req, res) => {
-    const {body} = req;
+    const body = req.body;
     
     try {
         await pelangganModel.createPelanggan(body);

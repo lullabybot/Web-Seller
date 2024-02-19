@@ -16,14 +16,13 @@ const getAllUkm = async (req, res) => {
 }
 
 const createNewUkm = async (req, res) => {
-
     const {body} = req;
     
     try {
         await tokoModel.createToko(body);
         res.json({
             message: 'Successfull creating ukm',
-            data: body
+            data: body,
         });
     } catch (error) {
         console.error('Error:', error);
